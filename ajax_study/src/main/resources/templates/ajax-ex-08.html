@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex01</title>
+    <!--  jQuery CDN-->
+    <script crossorigin="anonymous"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+<button onclick="ex08Fn()">ex08 함수 호출</button>
+</body>
+
+<script>
+    const ex08Fn = () => {
+        const val1 = "hello spring !!"
+        const params = {
+            "param1": val1,
+            "param2": "안녕"
+        }
+        $.ajax({
+            type: "post",//요청 방식 : post
+            url: "/ex08",//요청 주소 : /ex01 (mapping) 주소
+            //파라미터 전달
+            data: params,
+            // contentType: "application/json",
+            success: function (res) {
+                //요청 성공했을때 실행되는 함수
+                console.log("성공", res);
+                console.log(res[0]);
+                console.log(res[0].param1);
+                for(let i in res){
+                    console.log(res[i]);
+                }
+            },
+            error: function () {
+                // 실패했을때 실행되는 함수
+                console.log("실패");
+            }
+
+        })
+    }
+</script>
+</html>
